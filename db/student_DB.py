@@ -8,10 +8,12 @@ cur = db.cursor()
 
 def addStudent(**kwargs):
     cur.execute(f"""
-        INSERT INTO student(first_name, last_name, gender , date_of_birth, date_of_enrollment)
+        INSERT INTO student(first_name, last_name, username, password, gender , date_of_birth, date_of_enrollment)
         VALUES(
         '{kwargs['firstName']}',
         '{kwargs['lastName']}',
+        '{kwargs['username']}',
+        '{kwargs['password']}',
         '{kwargs['gender']}',
         '{kwargs['dOB']}', 
         '{kwargs['dOE']}');

@@ -2,6 +2,9 @@ from general import Person
 
 
 class Student(Person):
+    username = 'student'
+    password = 'password'
+
     def __init__(self, **kwargs):
         Person.setFirstName(self, kwargs['firstName'])
         Person.setLastName(self, kwargs['lastName'])

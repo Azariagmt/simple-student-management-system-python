@@ -1,7 +1,9 @@
 from db import general_DB
+import utilities
 
 
 def login():
+    utilities.clear()
     print(f"""
     
     Welcome admin enter username and password 

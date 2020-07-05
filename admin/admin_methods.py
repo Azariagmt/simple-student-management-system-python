@@ -83,6 +83,9 @@ def createStudent():
 
     """)
 
+    newStudentData['username'] = studentObject.username
+    newStudentData['password'] = studentObject.password
+
     response = input("yes to enter student to DB \n")
     if response.upper() == 'YES':
         student_DB.addStudent(**newStudentData)
