@@ -58,7 +58,7 @@ def changePassword(name, entity):
         confirmPassword = input('confirm password')
         if newPassword == confirmPassword:
             cur.execute(f"""
-                    ALTER TABLE {entity}} 
+                    ALTER TABLE {entity}
                     SET password = {newPassword}
                     WHERE id = {selected_id};
                     """)

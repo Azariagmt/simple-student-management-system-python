@@ -5,9 +5,6 @@ def login():
     print("""
     
     Login to your account!
-
-        other: forgot/change password? 1
-               Go back to home? 0
     
     """)
     name = input('Enter username')

@@ -20,8 +20,8 @@ def homePage():
         (         1.Student                                         )
         (         2.Teacher                                         )
         (         3.Admin                                           )
-        (                                                           )
-        (___________________________________________________________)
+        (         000.reset password                                )
+        (_________0.exit____________________________________________)
 
         """)
 
@@ -33,9 +33,12 @@ def homePage():
             teacher_login.login()
         elif choice == 3:
             admin_login.login()
-        elif choice == 0:
+        elif choice == 000:
             # reset password link
             pass
+        elif choice == 0:
+            print("exiting...")
+            break
         else:
             print('Error please enter choice again!')
 
