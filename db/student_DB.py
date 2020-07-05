@@ -17,6 +17,7 @@ def addStudent(**kwargs):
         '{kwargs['dOE']}');
         """)
     print('success inserting')
+    db.commit()
 
 # read queries
 

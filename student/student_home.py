@@ -8,6 +8,7 @@ def student_home(*args):
 
     1.View Grade
     2.View classes
+    3.set security questions
     0.logout...
     """)
 

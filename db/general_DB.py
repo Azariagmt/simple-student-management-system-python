@@ -1,6 +1,8 @@
 import sqlite3
 from teacher import teacher_login
+from teacher import teacher_home
 from student import student_login
+from student import student_home
 from admin import admin_login
 from admin import admin_home
 
@@ -16,8 +18,7 @@ def verify_credentials(username=None, password=None, entity=None):
             AND password = '{password}' 
         """)
         if result:
-            for row in result:
-                return row
+            teacher_home.teacher_home(result)
         else:
             print("no result found")
             teacher_login.login()
@@ -28,8 +29,7 @@ def verify_credentials(username=None, password=None, entity=None):
         AND password = '{password}
         """)
         if result:
-            for row in result:
-                return row
+            student_home.student_home(result)
         else:
             print("no result found")
             student_login.login()
@@ -44,12 +44,18 @@ def verify_credentials(username=None, password=None, entity=None):
         else:
             print("no result found")
             admin_login.login()
+    elif username and entity:
+        result = cur.execute(f"""
+        SELECT * FROM {entity}
+        WHERE username = '{username}'
+        """)
+        return result
     else:
         print('error')
 
 
 def changePassword(name, entity):
-    results = verify_credentials(username=name)
+    results = verify_credentials(username=name, entity=entity)
     for result in results:
         print(result)
     selected_id = input('select your id!')

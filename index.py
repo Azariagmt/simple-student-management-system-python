@@ -2,6 +2,7 @@ import utilities
 from student import student_login
 from teacher import teacher_login
 from admin import admin_login
+from db import general_DB
 
 
 def main():
@@ -10,17 +11,18 @@ def main():
 
 def homePage():
     while True:
+        utilities.clear()
         print("""
 
         (```````````````````````````````````````````````````````````)
         (              BLaBla UNIVESITY PORTAL                      )
         (               how do u wanna login as?                    )
         (                                                           )
-        (         1.Student                                         )
-        (         2.Teacher                                         )
-        (         3.Admin                                           )
-        (         000.reset password                                )
-        (_________0.exit____________________________________________)
+        (         1.  Student                                       )
+        (         2.  Teacher                                       )
+        (         3.  Admin                                         )
+        (         000.Reset password                                )
+        (_________0.  exit__________________________________________)
 
         """)
 
@@ -34,8 +36,19 @@ def homePage():
             admin_login.login()
         elif choice == 000:
             # reset password link
-            pass
+            utilities.clear()
+            print("""
+            What are you?
+            1. Student
+            2. Teacher
+            3. Admin
+            4. Robot
+            """)
+            selection = input('what are you? \n')
+            username = input('Enter your username \n')
+            general_DB.changePassword(username, selection)
         elif choice == 0:
+            utilities.clear()
             print("exiting...")
             break
         else:
