@@ -1,4 +1,4 @@
-from db import school_DBMS
+from db import general_DB
 
 
 def login():
@@ -10,14 +10,14 @@ def login():
     name = input('Enter username')
     password = input('Enter password \n ')
 
-    if password == '1' or name == '1':
-        change_password()
-    elif name == '0' or password == '1':
-        pass
+    if name and password:
+        general_DB.verify_credentials(
+            username=name, password=password, entity='student')
     else:
-        school_DBMS.verifyStudent()
+        print("please enter username and password")
+        login()
 
 
 def change_password():
     tochange_name = input('enter firstname or username')
-    school_DBMS.changePassword(tochange_name)
+    general_DB.changePassword(tochange_name, 'student')
