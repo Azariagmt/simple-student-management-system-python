@@ -1,5 +1,3 @@
-from student import student_home
-from student import student_login
 import sqlite3
 
 # create database and connect
@@ -11,22 +9,20 @@ cur = db.cursor()
 
 
 def createTables():
-    cur.execute("DROP TABLE IF EXISTS school")
     cur.execute("DROP TABLE IF EXISTS admin")
     cur.execute("DROP TABLE IF EXISTS teacher")
     cur.execute("DROP TABLE IF EXISTS student")
     cur.execute("""
-    CREATE TABLE school(
+     CREATE TABLE admin(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name VARCHAR(40)
+        name VARCHAR(2),
+        username VARCHAR(16),
+        password VARCHAR(16)
     );
     """)
     cur.execute("""
-     CREATE TABLE admin(
-        id INT(5),
-        name VARCHAR(2),
-        school_id INT(5)
-    );
+    INSERT INTO admin(name, username, password)
+    VALUES('admin','admin', 'admin');
     """)
     cur.execute("""
     CREATE TABLE student(
@@ -55,6 +51,11 @@ def createTables():
         security_answer VARCHAR(30)
     );
     """)
+    res = cur.execute("""
+    SELECT * FROM admin
+    """)
+    for resor in res:
+        print(resor)
     print('success')
 
 

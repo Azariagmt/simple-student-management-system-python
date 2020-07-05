@@ -9,7 +9,6 @@ def main():
 
 
 def homePage():
-    utilities.clear()
     while True:
         print("""
 

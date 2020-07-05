@@ -1,4 +1,5 @@
 from db import school_DBMS
+from db import student_DB
 from datetime import date
 import utilities
 from student import student_logic
@@ -21,7 +22,7 @@ def createStudent():
         'dOE': dateOfEnrollment
     }
 
-    studentObject = studentLogic.Student(**newStudentData)
+    studentObject = student_logic.Student(**newStudentData)
 
     print(f"""
                     Verify student Data
@@ -35,7 +36,7 @@ def createStudent():
 
     response = input("yes to enter student to DB \n")
     if response.upper() == 'YES':
-        school_DBMS.addStudent(**newStudentData)
+        student_DB.addStudent(**newStudentData)
 
 
 def updateStudent():
@@ -43,10 +44,10 @@ def updateStudent():
     print(f"""
     Search results for {name}: \n
     """)
-    school_DBMS.selectStudent(name=name)
+    student_DB.selectStudent(name=name)
     selectedId = int(input('Select Id of student you want to update'))
     result = []
-    result = school_DBMS.selectStudent(selectedId=selectedId)
+    result = student_DB.selectStudent(selectedId=selectedId)
     print(f"""
     editing {result}
     """)
@@ -58,7 +59,7 @@ def updateStudent():
         'dOE': result[4]
     }
 
-    oldStudentObject = studentLogic.Student(**tobeUpdatedStudentData)
+    oldStudentObject = student_logic.Student(**tobeUpdatedStudentData)
     print(f"""
                     Verify student Data
         You are editing
@@ -86,7 +87,7 @@ def updateStudent():
             'selectedId': selectedId
         }
 
-        studentObject = studentLogic.Student(**newStudentData)
+        studentObject = student_logic.Student(**newStudentData)
 
         print(f"""
                         Verify student Data
@@ -98,50 +99,5 @@ def updateStudent():
 
         """)
 
-        school_DBMS.updateStudent(**newStudentData)
+        student_DB.updateStudent(**newStudentData)
         print('success editing student')
-
-
-def readAllStudents():
-    while True:
-        school_DBMS.readAllStudents()
-        x = int(input(' press 0 to go back home \n'))
-        if x == 0:
-            break
-
-
-def deleteStudent():
-    name = input('Search first name\n')
-    print(f"""
-    Search results for {name}: \n
-    """)
-    school_DBMS.selectStudent(name=name)
-    selectedId = int(input('Select Id of student you want to update'))
-    result = []
-    result = school_DBMS.selectStudent(selectedId=selectedId)
-    print(f"""
-    editing {result}
-    """)
-    tobeDeletedStudentData = {
-        'firstName': result[0],
-        'lastName': result[1],
-        'dOB': result[3],
-        'gender': result[2],
-        'dOE': result[4],
-        'selectedId': selectedId
-    }
-
-    tobeDeletedStudentObject = studentLogic.Student(**tobeDeletedStudentData)
-    print(f"""
-                    Verify student Data
-        You are deleting student
-
-        First Name    = {tobeDeletedStudentObject.getFirstName()}
-        Last Name     = {tobeDeletedStudentObject.getLastName()}
-        Gender        = {tobeDeletedStudentObject.getGender()}
-        Date of Birth = {tobeDeletedStudentObject.getDateOfBirth()}
-
-    """)
-    cont = input('do you wish to proceed')
-    if cont.upper() == 'YES':
-        school_DBMS.deleteStudent(selectedId=selectedId)

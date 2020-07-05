@@ -2,6 +2,7 @@ import sqlite3
 from teacher import teacher_login
 from student import student_login
 from admin import admin_login
+from admin import admin_home
 
 db = sqlite3.connect('school-DBMS.db')
 cur = db.cursor()
@@ -35,15 +36,14 @@ def verify_credentials(username=None, password=None, entity=None):
     elif entity == 'admin' and username and password:
         result = cur.execute(f"""
         SELECT * FROM admin
-        WHERE name = '{username}'
+        WHERE username = '{username}'
         AND password = '{password}'
         """)
         if result:
-            for row in result:
-                return row
-            else:
-                print("no result found")
-                admin_login.login()
+            admin_home.admin_home(result)
+        else:
+            print("no result found")
+            admin_login.login()
     else:
         print('error')
 
