@@ -1,7 +1,7 @@
 from db import school_DBMS
 
 
-def choose():
+def login():
     print("""
     
     Login to your account!

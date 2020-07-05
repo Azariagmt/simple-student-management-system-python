@@ -1,5 +1,7 @@
 import utilities
 from student import student_login
+from teacher import teacher_login
+from admin import admin_login
 
 
 def main():
@@ -26,7 +28,14 @@ def homePage():
         choice = int(input('Please make a choice. \n'))
 
         if choice == 1:
-            student_login.choose()
+            student_login.login()
+        elif choice == 2:
+            teacher_login.login()
+        elif choice == 3:
+            admin_login.login()
+        elif choice == 0:
+            # reset password link
+            pass
         else:
             print('Error please enter choice again!')
 

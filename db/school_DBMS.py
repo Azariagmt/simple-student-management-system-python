@@ -101,60 +101,6 @@ def deleteStudent(selectedId=None):
         db.commit()
 
 
-def verifyStudent(name=None, password=None):
-    if name and password:
-        results = cur.execute(f"""
-        SELECT * FROM student 
-        WHERE name = '{name}' AND password = '{password}
-        """)
-        if results:
-            for row in results:
-                return row
-        else:
-            login.choice()
-    elif name:
-        results = cur.execute(f"""
-        SELECT * FROM student
-        WHERE name = {name}
-        """)
-        if results:
-            for row in results:
-                return row
-        else:
-            return f'no name found'
-
-
-def changePassword(name):
-    results = verifyStudent(name=name)
-    for result in results:
-        print(result)
-    selected_id = input('select your id!')
-    if fetch_security_question(selected_id):
-        newPassword = input('Please enter new password \n')
-        confirmPassword = input('confirm password')
-        if newPassword == confirmPassword:
-            cur.execute(f"""
-                    ALTER TABLE STUDENT 
-                    SET password = {newPassword}
-                    WHERE id = {selected_id};
-                    """)
-            print('Password changed successfully')
-
-
-def fetch_security_question(selected_id):
-    question = cur.execute(f"""
-    SELECT security_question FROM student 
-    WHERE id = {selected_id}
-    """)
-    answer = cur.execute(f"""
-    SELECT security_answer FROM student 
-    WHERE id = {selected_id}
-    """)
-    print([question for question in question])
-    guess = input('Input answer for security question..\n')
-
-    if guess == answer:
-        return True
 
 
 if __name__ == "__main__":
