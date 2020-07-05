@@ -52,11 +52,14 @@ def createTables():
     );
     """)
     res = cur.execute("""
-    SELECT * FROM admin
+    SELECT * FROM student
     """)
+    db.commit()
+
     for resor in res:
         print(resor)
     print('success')
+    db.close()
 
 
 if __name__ == "__main__":
