@@ -1,4 +1,8 @@
+from teacher import teacher_methods
+
+
 def teacher_home(*args):
+    print(args)
     while True:
         print("""
         welcome teacher
@@ -9,5 +13,6 @@ def teacher_home(*args):
         2. set security question....
 
         """)
-        choice = input('what u wanna do? \n')
-        print(choice)
+        choice = int(input('what u wanna do? \n'))
+        if choice == 1:
+            teacher_methods.grade_student(args[0])

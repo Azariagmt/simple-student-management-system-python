@@ -12,6 +12,7 @@ def createTables():
     cur.execute("DROP TABLE IF EXISTS admin")
     cur.execute("DROP TABLE IF EXISTS teacher")
     cur.execute("DROP TABLE IF EXISTS student")
+    cur.execute("DROP TABLE IF EXISTS student_teacher")
     cur.execute("""
      CREATE TABLE admin(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,6 +56,7 @@ def createTables():
     CREATE TABLE student_teacher(
         student_id INTEGER,
         teacher_id INTEGER,
+        course VARCHAR(20),
         mark INTEGER,
         date DATE,
         PRIMARY KEY(student_id, teacher_id),

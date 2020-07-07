@@ -73,3 +73,11 @@ def delete_teacher(selected_id=None):
 
 
 #update U
+
+def update_teacher(**kwargs):
+    cur.execute(f"""
+    UPDATE teacher
+    SET first_name = '{kwargs['firstName']}',last_name = '{kwargs['lastName']}',gender = '{kwargs['gender']}',date_of_birth = '{kwargs['dOB']}', date_of_enrollment = '{kwargs['dOE']}'
+    WHERE id = {kwargs['selectedId']}; 
+    """)
+    db.commit()
