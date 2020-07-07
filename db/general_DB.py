@@ -25,10 +25,11 @@ def verify_credentials(username=None, password=None, entity=None):
     elif entity == 'student' and username and password:
         result = cur.execute(f"""
         SELECT * FROM student 
-        WHERE name = '{username}' 
-        AND password = '{password}
+        WHERE username = '{username}' 
+        AND password = '{password}';
         """)
         if result:
+            print(result)
             student_home.student_home(result)
         else:
             print("no result found")

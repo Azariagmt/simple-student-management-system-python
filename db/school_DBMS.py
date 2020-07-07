@@ -51,6 +51,20 @@ def createTables():
         security_answer VARCHAR(30)
     );
     """)
+    cur.execute("""
+    CREATE TABLE student_teacher(
+        student_id INTEGER,
+        teacher_id INTEGER,
+        mark INTEGER,
+        date DATE,
+        PRIMARY KEY(student_id, teacher_id),
+        FOREIGN KEY(student_id) REFERENCES student(id)
+        ON DELETE CASCADE,
+        FOREIGN KEY(teacher_id) REFERENCES teacher(id)
+        ON DELETE CASCADE
+    );
+
+    """)
     res = cur.execute("""
     SELECT * FROM student
     """)

@@ -2,6 +2,8 @@ import utilities
 from db import student_DB
 from student import student_logic
 from admin import admin_home
+from teacher import teacher_logic
+from db import teacher_DB
 
 # read
 
@@ -90,6 +92,42 @@ def createStudent():
     if response.upper() == 'YES':
         student_DB.addStudent(**newStudentData)
         admin_home.admin_home({'name': 'admin'})
+
+
+def create_teacher():
+    utilities.clear()
+    print("""
+    Adding new teacher!!
+    """)
+    first_name = input('first name of teacher \n')
+    last_name = input('last name of teacher \n')
+    sex = input('Enter gender \n')
+    dOB = input('Enter date of birth \n')
+
+    new_teacher_data = {
+        'firstName': first_name,
+        'lastName': last_name,
+        'gender': sex,
+        'dOB': dOB
+    }
+
+    teacher_object = teacher_logic.Teacher(**new_teacher_data)
+
+    print(f"""
+    Verify data
+        {teacher_object.getFirstName()}
+        {teacher_object.getLastName()}
+        {teacher_object.getGender()}
+        {teacher_object.getDateOfBirth()}
+    """)
+
+    new_teacher_data['username'] = teacher_object.username
+    new_teacher_data['password'] = teacher_object.password
+
+    ver = input('ENter yes if data is correct')
+    if ver.upper() == 'YES':
+        teacher_DB.add_teacher(**new_teacher_data)
+
 
 # update
 
