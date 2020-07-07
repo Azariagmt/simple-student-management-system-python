@@ -8,7 +8,7 @@ from student import student_logic
 
 def view_grade():
     student_teacher.view_grade()
-
+    
 
 def view_classes():
     pass
