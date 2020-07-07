@@ -1,6 +1,6 @@
 from db import student_teacher
 from datetime import date
-
+from db import general_DB
 
 def grade_student(teacher_id):
     student_id = int(input('Enter student id \n'))
@@ -15,3 +15,10 @@ def grade_student(teacher_id):
     }
 
     student_teacher.add_grade(**send_dict)
+
+def set_security_question(teacher_id):
+    general_DB.set_security_question(teacher_id, 'teacher')
+
+
+def change_password(username):
+    general_DB.changePassword(username, 'teacher')

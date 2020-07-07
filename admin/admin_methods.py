@@ -6,8 +6,6 @@ from teacher import teacher_logic
 from db import teacher_DB
 
 # read
-
-
 def readAllStudents():
     while True:
         student_DB.readAllStudents()
@@ -16,8 +14,6 @@ def readAllStudents():
             break
 
 # delete
-
-
 def deleteStudent():
     name = input('Search first name\n')
     print(f"""
@@ -130,8 +126,6 @@ def create_teacher():
 
 
 # update
-
-
 def updateStudent():
     name = input('Search first name\n')
     print(f"""

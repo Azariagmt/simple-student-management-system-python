@@ -86,3 +86,25 @@ def fetch_security_question(selected_id, entity):
 
     if guess == answer:
         return True
+
+def set_security_question(selected_id, entity):
+    security_questions = ('first pet', 'first kiss')
+    for i ,question in enumerate(security_questions):
+        print(i +':'+ question)
+
+    selected_question = int(input('select security question number'))
+    selected_question = security_questions[selected_question]
+
+    cur.execute(f"""
+    ALTER TABLE {entity}
+    SET security_question = '{selected_question}' 
+    WHERE id = {selected_id};
+    """)
+    security_answer = input('Enter security question answer \n')
+    
+    cur.execute(f"""
+    ALTER TABLE {entity}
+    SET security_answer = '{security_answer}'
+    WHERE id = {selected_id};
+    """)
+    print('success...')
