@@ -1,4 +1,5 @@
 from student import student_methods
+import index
 
 
 def student_home(*args):
@@ -20,3 +21,8 @@ def student_home(*args):
             student_methods.view_classes()
         elif choice == 3:
             student_methods.set_security_question
+        elif choice == 0:
+            index.homePage()
+        else:
+            print('what?')
+            continue

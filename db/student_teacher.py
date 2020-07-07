@@ -18,3 +18,6 @@ def add_grade(**kwargs):
     print('success inserting..')
     db.commit()
     teacher_home.teacher_home(kwargs['teacher_id'])
+
+def view_grade():
+    pass

@@ -1,8 +1,8 @@
 import utilities
-from student import student_login
 from teacher import teacher_login
 from admin import admin_login
 from db import general_DB
+from student import student_login
 
 
 def main():
@@ -44,7 +44,16 @@ def homePage():
             3. Admin
             4. Robot
             """)
-            selection = input('what are you? \n')
+            selection = int(input('what are you? \n'))
+            if selection == 1:
+                selection = 'student'
+            elif selection == 2:
+                selection = 'teacher'
+            elif selection == 3:
+                selection = 'admin'
+            else:
+                print('idkkkkk and idc')
+                continue
             username = input('Enter your username \n')
             general_DB.changePassword(username, selection)
         elif choice == 0:
