@@ -1,7 +1,6 @@
 import utilities
 from teacher import teacher_login
 from admin import admin_login
-
 from student import student_login
 from db import general_DB
 

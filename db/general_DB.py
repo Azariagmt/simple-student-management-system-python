@@ -108,3 +108,4 @@ def set_security_question(selected_id, entity):
     WHERE id = {selected_id};
     """)
     print('success...')
+    db.commit()

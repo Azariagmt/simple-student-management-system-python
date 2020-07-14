@@ -4,7 +4,7 @@ db = sqlite3.connect('school-DBMS.db')
 cur = db.cursor()
 
 result = cur.execute("""
-SELECT * FROM student_teacher;
+SELECT * FROM student;
 """)
 for row in result:
     print(row)

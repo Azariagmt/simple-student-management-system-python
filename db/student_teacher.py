@@ -20,4 +20,7 @@ def add_grade(**kwargs):
     teacher_home.teacher_home(kwargs['teacher_id'])
 
 def view_grade():
-    pass
+    cur.execute("""
+    SELECT * FROM student_teacher
+    WHERE student_id = ''
+    """)

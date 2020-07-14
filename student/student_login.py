@@ -23,7 +23,3 @@ def login():
 def change_password():
     tochange_name = input('enter firstname or username')
     general_DB.changePassword(tochange_name, 'student')
-
-
-if __name__ == "__main__":
-    pass
