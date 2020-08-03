@@ -1,8 +1,11 @@
-# simple-student-management-system-python
+##      Student Management System
 
-## clone repository
-## open terminal and cs into directory where cloned
-## python3 index.py
+###     Requirements
+        python 3.6+ due to usage of fstrings
 
+###     Instructions
+        clone repository
+        open terminal 
+        cd into current directory
+        run index.py file
 
-### Requires python 3.6+ due to usage of fstrings
