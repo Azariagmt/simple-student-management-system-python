@@ -3,7 +3,8 @@ from teacher import teacher_login
 from admin import admin_login
 from student import student_login
 from db import general_DB
-
+from db import school_DBMS
+import os
 
 def main():
     homePage()
@@ -64,4 +65,13 @@ def homePage():
             print('Error please enter choice again!')
 
 
-main()
+
+
+if __name__ == "__main__":
+    if os.path.exists("db/school_DBMS.py"):
+        os.remove("db/school_DBMS.py")
+        school_DBMS.createTables()
+    else:
+        print("The file does not exist")
+    main()
+
